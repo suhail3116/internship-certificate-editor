@@ -1,0 +1,138 @@
+/* ==========================================================================
+   APEX CERTIFICATE STUDIO - PRO DESIGN SYSTEM (Vanilla CSS + HSL Architecture)
+   ========================================================================== */
+
+/* 1. HSL Design Tokens */
+:root {
+  /* Color Palette - Obsidian & Emerald Luxe Theme */
+  --hsl-bg: 222 40% 6%;           /* #0a0e17 Deep Obsidian */
+  --hsl-surface: 220 35% 10%;      /* #111827 Dark Surface */
+  --hsl-surface-hover: 220 30% 14%;/* #192238 Surface Hover */
+  --hsl-card: 220 32% 12%;       /* #141c2e Card BG */
+  --hsl-border: 220 25% 18%;     /* #222d42 Sleek Border */
+  --hsl-border-accent: 160 84% 39%;/* #10b981 Emerald Accent */
+  
+  --hsl-primary: 160 84% 39%;     /* #10b981 Vibrant Emerald */
+  --hsl-primary-hover: 160 84% 45%;
+  --hsl-accent-gold: 38 92% 50%;   /* #f59e0b Luxury Gold */
+  --hsl-accent-cyan: 187 92% 43%;   /* #06b6d4 Tech Cyan */
+  
+  --hsl-text-heading: 210 40% 98%; /* #f8fafc Crisp White */
+  --hsl-text-body: 215 20% 80%;    /* #cbd5e1 Light Gray */
+  --hsl-text-muted: 215 16% 58%;   /* #7dd3fc Muted Gray */
+  
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-mono: 'Consolas', 'Fira Code', monospace;
+  
+  /* Shadows & Glassmorphism */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(16, 185, 129, 0.3);
+  
+  --glass-bg: rgba(17, 24, 39, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Micro-interaction Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Global Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: hsl(var(--hsl-bg));
+  color: hsl(var(--hsl-text-body));
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--hsl-bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hsl-border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--hsl-text-muted));
+}
+
+/* 4. Print Styles */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  .field-active-highlight,
+  .field-active-badge,
+  .field-toolbar,
+  .sidebar,
+  .studio-header,
+  .intro-overlay {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  #certificate-svg, #certificate-svg * {
+    visibility: visible !important;
+  }
+
+  #certificate-svg {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* 5. Keyframe Motion & Animations */
+@keyframes studioFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.animate-fade-in {
+  animation: studioFadeIn var(--transition-normal) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 350ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
